@@ -18,5 +18,21 @@ plt.xticks(rotation= 90)
 plt.tight_layout()
 plt.show()
 
+#Ejercicio 4.7
+
+MG = list(movies['genres'].value_counts().head(15).index)
+GP = movies[['genres', 'revenue']]
+GP = GP[GP.genres.isin(MG)]
+R = []
+
+for i in MG:
+	R.append(GP.loc[(GP['genres'] == i), 'revenue'].sum())
+
+df = pd.DataFrame(list(zip(MG, R)), columns = ['Género','Ganancias'])
+print(df)
+R.clear()
+
+df = df.sort_values(by = 'Ganancias', ascending = True)
+
 
 	
