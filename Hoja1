@@ -40,5 +40,27 @@ R.clear()
 
 df = df.sort_values(by = 'Ganancias', ascending = True)
 
+#Ejercicio 4.8
 
-	
+#Verficar normalidad
+estadistico1, p_value1 = stats.kstest(movies['actorsAmount'], 'norm')
+estadistico2, p_value2 = stats.kstest(movies['revenue'], 'norm')
+
+
+
+print("Cantidad de Actores:",  'Estadístico= %.3f, p_value=%.3f' % (estadistico1, p_value1))
+print("Ingresos:",  'Estadístico= %.3f, p_value=%.3f' % (estadistico2, p_value2))
+
+
+Contaminacion = movies.corr(method = 'spearman')
+r, p = stats.spearmanr(movies['actorsAmount'], movies['revenue'])
+print(f"Correlación Spearman: r={r}, p-value={p}")
+
+año = movies[['releaseDate', 'actorsAmount']]
+
+m = año.groupby(año['releaseDate'].dt.year).mean()
+print(m)
+
+graph = m.plot(kind = 'bar')
+plt.tight_layout()
+plt.show()
