@@ -2,7 +2,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import scipy.stats as stats
+from scipy.stats import shapiro
 
+movies = pd.read_csv("movies.csv", encoding='cp1252')
+des = movies.transpose()
+
+movies['releaseDate'] = pd.to_datetime(movies['releaseDate'], errors='coerce')
 
 #Ejercicio 4.6
 
