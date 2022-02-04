@@ -88,3 +88,14 @@ sns.heatmap(correlation_mat, annot = True)
 
 plt.show()
 
+#Ejercicio 4.10
+CM = movies[['voteAvg', 'director']]
+CM = CM.sort_values(by = 'voteAvg', ascending = True)
+CM = CM.tail(20)
+
+graf = sns.countplot(x = 'director', data = CM)
+plt.xticks(rotation= 90)
+plt.tight_layout()
+plt.show()
+
+
