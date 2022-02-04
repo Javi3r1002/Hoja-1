@@ -1,0 +1,22 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+#Ejercicio 4.6
+
+movies = pd.read_csv("movies.csv", encoding='cp1252')
+des = movies.transpose()
+
+fechas = movies.sort_values(by = 'releaseDate', ascending = True)
+
+VF = fechas.tail(20)
+
+graf = sns.countplot(x = 'genres', data = VF)
+plt.xticks(rotation= 90)
+plt.tight_layout()
+plt.show()
+
+
+	
