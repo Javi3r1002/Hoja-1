@@ -64,3 +64,27 @@ print(m)
 graph = m.plot(kind = 'bar')
 plt.tight_layout()
 plt.show()
+
+
+#Ejercicio 4.9
+
+Co = movies[['castWomenAmount', 'castMenAmount', 'revenue', 'popularity']]
+a, b = Co.shape
+
+for i in range(0, a):
+	
+	for k in range(0, b):
+		
+		if (isinstance(Co.iloc[i,k], str) == True):
+			try:
+  				Co.loc[i,k] = np.float64(Co.iloc[i,k])
+			except:
+  				Co.loc[i,k] = np.float64(0)
+
+correlation_mat = Co.corr()
+print(correlation_mat)
+
+sns.heatmap(correlation_mat, annot = True)
+
+plt.show()
+
